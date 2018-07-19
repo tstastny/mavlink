@@ -27,6 +27,18 @@
         <param index="7">Empty</param>
       </entry>
     </enum>
+    <enum name="NPFG_WIND_COND">
+      <!-- NPFG wind condition specifiers -->
+      <entry name="uint8 NPFG_WIND_COND_LOW" value="0">
+        <description>Wind condition is low</description>
+      </entry>
+      <entry name="uint8 NPFG_WIND_COND_HIGH_FEAS" value="1">
+        <description>Wind condition is high, but path following is still feasible</description>
+      </entry>
+      <entry name="uint8 NPFG_WIND_COND_HIGH_INFEAS" value="2">
+        <description>Wind condition is high and path following is not feasible</description>
+      </entry>
+    </enum>
   </enums>
   <messages>
     <message id="78" name="COMMAND_INT_STAMPED">
@@ -168,7 +180,7 @@
       <field type="float" name="temperature" units="degC">Battery pack temperature</field>
       <field type="uint16_t" name="voltage" units="mV">Battery pack voltage</field>
       <field type="int16_t" name="current" units="mA">Battery pack current</field>
-      <field type="uint8_t" name="SoC">Battery pack state-of-charge</field>
+      <field type="uint8_t" name="NPFG_WIND_CONDSoC">Battery pack state-of-charge</field>
       <field type="uint16_t" name="batterystatus">Battery monitor status report bits in Hex</field>
       <field type="uint16_t" name="serialnumber">Battery monitor serial number in Hex</field>
       <field type="uint32_t" name="safetystatus">Battery monitor safetystatus report bits in Hex</field>
@@ -233,6 +245,21 @@
       <field type="float" name="pwr_brd_digital_amp" units="A">Power board digital current sensor</field>
       <field type="float" name="pwr_brd_ext_amp" units="A">Power board extension current sensor</field>
       <field type="float" name="pwr_brd_aux_amp" units="A">Power board aux current sensor</field>
+    </message>
+    <message id="213" name="NPFG_STATUS">
+      <description>Nonlinear path following guidance status</description>
+      <field type="uint64_t" name="timestamp" units="us">Timestamp</field>
+      <field type="float" name="lateral_acceleration_demand" units="us">Lateral acceleration demand</field>
+      <field type="float" name="heading_ref" units="deg">Heading reference</field>
+      <field type="float" name="heading_error" units="deg">Heading error</field>
+      <field type="float" name="nav_bearing" units="deg">Look-ahead bearing</field>
+      <field type="float" name="bearing_feas">Bearing feasibility</field>
+      <field type="float" name="track_error" units="m">Track error</field>
+      <field type="float" name="track_error_bound" units="m">Track error boundary</field>
+      <field type="float" name="p_gain">Proportional gain</field>
+      <field type="float" name="airsp_incr_w" units="m/s">Airspeed increment due to wind speed</field>
+      <field type="float" name="airsp_incr_e" units="m/s">Airspeed increment due to track error</field>
+      <field type="uint8_t" name="wind_condition" enum="NPFG_WIND_COND">Wind condition</field>
     </message>
   </messages>
 </mavlink>
