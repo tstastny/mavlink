@@ -29,13 +29,13 @@
     </enum>
     <enum name="NPFG_WIND_COND">
       <!-- NPFG wind condition specifiers -->
-      <entry name="uint8 NPFG_WIND_COND_LOW" value="0">
+      <entry name="NPFG_WIND_COND_LOW" value="0">
         <description>Wind condition is low</description>
       </entry>
-      <entry name="uint8 NPFG_WIND_COND_HIGH_FEAS" value="1">
+      <entry name="NPFG_WIND_COND_HIGH_FEAS" value="1">
         <description>Wind condition is high, but path following is still feasible</description>
       </entry>
-      <entry name="uint8 NPFG_WIND_COND_HIGH_INFEAS" value="2">
+      <entry name="NPFG_WIND_COND_HIGH_INFEAS" value="2">
         <description>Wind condition is high and path following is not feasible</description>
       </entry>
     </enum>
@@ -180,7 +180,7 @@
       <field type="float" name="temperature" units="degC">Battery pack temperature</field>
       <field type="uint16_t" name="voltage" units="mV">Battery pack voltage</field>
       <field type="int16_t" name="current" units="mA">Battery pack current</field>
-      <field type="uint8_t" name="NPFG_WIND_CONDSoC">Battery pack state-of-charge</field>
+      <field type="uint8_t" name="SoC">Battery pack state-of-charge</field>
       <field type="uint16_t" name="batterystatus">Battery monitor status report bits in Hex</field>
       <field type="uint16_t" name="serialnumber">Battery monitor serial number in Hex</field>
       <field type="uint32_t" name="safetystatus">Battery monitor safetystatus report bits in Hex</field>
@@ -249,7 +249,8 @@
     <message id="213" name="NPFG_STATUS">
       <description>Nonlinear path following guidance status</description>
       <field type="uint64_t" name="timestamp" units="us">Timestamp</field>
-      <field type="float" name="lateral_acceleration_demand" units="us">Lateral acceleration demand</field>
+      <field type="float" name="path_curvature" units="m^-1">Path curvature</field>
+      <field type="float" name="lateral_accel_demand" units="m/s^2">Lateral acceleration demand</field>
       <field type="float" name="heading_ref" units="deg">Heading reference</field>
       <field type="float" name="heading_error" units="deg">Heading error</field>
       <field type="float" name="nav_bearing" units="deg">Look-ahead bearing</field>
