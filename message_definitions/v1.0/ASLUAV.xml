@@ -281,6 +281,15 @@
       <field type="float" name="tas" units="m/s">True airspeed</field>
       <field type="float" name="wind_speed" units="m/s">Wind speed (2D)</field>
       <field type="float" name="wind_dir" units="deg">Wind direction (2D)</field>
+      <field type="float" name="wind_z" units="m/s">Wind Z</field>
+      <field type="float" name="alpha" units="deg">Angle of attack</field>
+      <field type="float" name="beta" units="deg">Sideslip</field>
+    </message>
+    <message id="215" name="HIL_AIRFLOW_ANGLES">
+      <description>Hardware-in-the-loop airflow angle sensor data</description>
+      <field type="uint64_t" name="timestamp" units="us">Timestamp</field>
+      <field type="float" name="angleofattack" units="deg">Angle of attack</field>
+      <field type="float" name="sideslip" units="deg">Sideslip angle</field>
     </message>
   </messages>
 </mavlink>
